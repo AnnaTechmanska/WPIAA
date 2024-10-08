@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SingletonVault
+{
+public class Vault {
+    private static Vault instance = null;
+        private String accessKey;
+    
+    private Vault() {
+        createKey = "example";
+    }
+  
+    public static Vault getInstance() {
+        if (instance == null) {
+            instance = new Vault(); 
+        }
+        return instance;
+    }
+    
+    public String getCreateKey() {
+        String keyReturn = createKey;
+        createKey = null;  
+        return keyReturn;
+    }
+}
+}
+
+
+
+
+public class SingletonVault {
+    public static void main(String[] args) {
+        Vault vault = Vault.getInstance();
+
+        String firstKey = vault.getCreateKey();        
+        String secondKey = vault.getCreateKey();
+    }
+}
